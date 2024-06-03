@@ -13,7 +13,6 @@ void setup() {
   lcd.begin(16, 2);  // initialize the lcd
 
 
-  pinMode(PWM_out_pin, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);  // Blink for power/run indication
   delay(300);
@@ -25,7 +24,7 @@ void loop() {
   const int sensorValue = analogRead(A7);
 
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V)
-  const int pH = map(sensorValue, (1023 * 0.6 / 5), (1023 * 3 / 5), 0, 1400);  // using a 150 ohm resistor, so 20 mA maps to a max of 3 V
+  const int pH = map(sensorValue, (1023 * 0.24 / 5), (1023 * 1.2 / 5), 0, 1400);  // using a 150 ohm resistor, so 4-20 mA maps to 0.6-3 V // ~60 ohm now so 0.24-1.2V
 
     lcd.setBacklight(255);
     lcd.home();
